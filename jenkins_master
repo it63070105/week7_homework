@@ -13,9 +13,15 @@ pipeline {
         stage('Tigger the Slave Jobs') {
             steps {
                 step{
-                    env.WORKSPACE = pwd()
-                    def version = readFile "${env.WORKSPACE}/parameter.json"
-                    echo version
+                    // def isSuccess = true
+                    // def file = null
+
+                    // try {
+                    // file = readFile(file: "/myrepo/${params.value}.txt") 
+                    // }catch(e) {
+                    // isSuccess = false
+                    // }
+                    sh 'python myscript.py Alice --age 30'
                 }
                 // step{
                 //     echo 'Start Trigger to send name and age to slave'
