@@ -12,18 +12,19 @@ pipeline {
 
         stage('Tigger the Slave Jobs') {
             steps {
-                step{
-                    echo 'Read JSON file'
-                    script {
+                echo 'Read JSON file'
+                script {
+                    try{
                         def file = readJSON file: "${env.WORKSPACE}/data.json"
-                        element1 = "${envname.name}"
-                        echo element1
+                        name = "${file.name}"
+                        echo name
+                    }
+                    catch (err){
+                        echo err
                     }
                 }
-                step{
-                    echo 'Start Trigger to send name and age to slave'
-                    build job: 'slave', parameters: [string(name: 'NAME', value: 'Alice'), string(name: 'Ages', value: '21')]
-                }
+                echo 'Start Trigger to send name and age to slave'
+                build job: 'slave', parameters: [string(name: 'NAME', value: 'Alice'), string(name: 'Ages', value: '21')]
             }
         }
     }
