@@ -19,13 +19,14 @@ pipeline {
                         age = "${data.age}"
                         echo name
                         echo age
+                        echo 'Start Trigger to send name and age to slave'
+                        build job: 'slave', parameters: [string(name: 'NAME', value: "$name"), string(name: 'AGE', value: "$age")]
                     }
                     catch (err){
-                        echo err
+                        echo err.toString()
                     }
                 }
-                echo 'Start Trigger to send name and age to slave'
-                build job: 'slave', parameters: [string(name: 'NAME', value: "$name"), string(name: 'AGE', value: "$age")]
+                
             }
         }
     }
