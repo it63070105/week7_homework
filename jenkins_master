@@ -6,7 +6,6 @@ pipeline {
         stage('Welcome to master'){
             steps{
                 echo 'Start Program'
-                echo 'Status: OK'
             }
         }
 
@@ -15,7 +14,7 @@ pipeline {
                 echo 'Read JSON file'
                 script {
                     try{
-                        def data = readJSON file: "${env.WORKSPACE}/data.json"
+                        def data = readJSON file: "${env.WORKSPACE}/dat.json"
                         name = "${data.name}"
                         age = "${data.age}"
                         echo name
