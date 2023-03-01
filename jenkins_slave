@@ -9,9 +9,8 @@ pipeline {
     stages {
         stage('print something') {
             steps {
-                echo "Slave ${params.NAME} of ${params.AGE}"
+                echo "Name: ${params.NAME} Age: ${params.AGE}"
                 sh "python3 myscript.py ${params.NAME} --age ${params.AGE}"
-                
             }
         }
     }
