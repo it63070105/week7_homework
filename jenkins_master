@@ -21,7 +21,7 @@ pipeline {
                     // }catch(e) {
                     // isSuccess = false
                     // }
-                    sh 'python myscript.py Alice --age 30'
+                    sh 'python myscript.py Alice --age 35'
                 // }
                 // step{
                 //     echo 'Start Trigger to send name and age to slave'
