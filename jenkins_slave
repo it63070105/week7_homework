@@ -5,12 +5,12 @@ pipeline {
         string(name: 'NAME', defaultValue: 'pawit', description: 'Enter your name')
         string(name: 'AGE', defaultValue:'1', description: 'your age')
     }
-    
+
     stages {
         stage('print something') {
             steps {
                 echo "Slave ${params.NAME} of ${params.AGE}"
-                sh "python3 myscript.py ${params.NAME} --age ${params.AGE}"
+                sh "python3 /myscript.py ${params.NAME} --age ${params.AGE}"
                 
             }
         }
