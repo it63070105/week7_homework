@@ -12,23 +12,18 @@ pipeline {
 
         stage('Tigger the Slave Jobs') {
             steps {
-                // step{
-                    // def isSuccess = true
-                    // def file = null
-
-                    // try {
-                    // file = readFile(file: "/myrepo/${params.value}.txt") 
-                    // }catch(e) {
-                    // isSuccess = false
-                    // }
-                    sh 'git clone https://github.com/it63070105/week7_homework.git'
-                    sh 'cd week7_homework'
-                    sh 'cat parameter.json'
-                // }
-                // step{
-                //     echo 'Start Trigger to send name and age to slave'
-                //     build job: 'slave', parameters: [string(name: 'NAME', value: 'Alice'), string(name: 'Ages', value: '21')]
-                // }
+                step{
+                    echo 'Read JSON file'
+                    script {
+                        def file = readJSON file: "${env.WORKSPACE}/data.json"
+                        element1 = "${envname.name}"
+                        echo element1
+                    }
+                }
+                step{
+                    echo 'Start Trigger to send name and age to slave'
+                    build job: 'slave', parameters: [string(name: 'NAME', value: 'Alice'), string(name: 'Ages', value: '21')]
+                }
             }
         }
     }
