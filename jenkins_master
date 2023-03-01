@@ -15,9 +15,9 @@ pipeline {
                 echo 'Read JSON file'
                 script {
                     try{
-                        def file = readJSON file: "${env.WORKSPACE}/data.json"
-                        name = "${file.name}"
-                        age = "${file.age}"
+                        def data = readJSON file: "${env.WORKSPACE}/data.json"
+                        name = "${data.name}"
+                        age = "${data.age}"
                         echo name
                         echo age
                     }
@@ -26,7 +26,7 @@ pipeline {
                     }
                 }
                 echo 'Start Trigger to send name and age to slave'
-                build job: 'slave', parameters: [string(name: 'NAME', value: '$name'), string(name: 'AGE', value: '$age')]
+                build job: 'slave', parameters: [string(name: 'NAME', value: "$name"), string(name: 'AGE', value: "$age")]
             }
         }
     }
