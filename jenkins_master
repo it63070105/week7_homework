@@ -21,7 +21,9 @@ pipeline {
                     // }catch(e) {
                     // isSuccess = false
                     // }
-                    sh 'python myscript.py Alice --age 35'
+                    sh 'git clone https://github.com/it63070105/week7_homework.git'
+                    sh 'cd week7_homework'
+                    sh 'cat parameter.json'
                 // }
                 // step{
                 //     echo 'Start Trigger to send name and age to slave'
