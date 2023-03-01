@@ -14,7 +14,7 @@ pipeline {
                 echo 'Read JSON file'
                 script {
                     try{
-                        def data = readJSON file: "${env.WORKSPACE}/dat.json"
+                        def data = readJSON file: "${env.WORKSPACE}/data.json"
                         name = "${data.name}"
                         age = "${data.age}"
                         echo name
